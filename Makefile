@@ -6,7 +6,7 @@
 #    By: danielasayuminitta <danielasayuminitta@    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 18:47:34 by danielasayu       #+#    #+#              #
-#    Updated: 2024/01/19 23:24:08 by danielasayu      ###   ########.fr        #
+#    Updated: 2024/01/20 19:02:13 by danielasayu      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ all: $(PROJECT_NAME)
 
 $(PROJECT_NAME):
 	@echo "$(YELLOW) ⟦ Compilando Cliente e Servidor ⟧ $(RESET)"
+	@make -C $(LIBFT_DIR) --silent
 	@make $(CLIENT_NAME)
 	@make $(SERVER_NAME)
 	@echo "$(GREEN)✓ Cliente e Servidor Compilados $(RESET)"
@@ -66,7 +67,7 @@ fclean:
 	@rm -f $(OBJS)
 	@rm -f $(CLIENT_NAME)
 	@rm -f $(SERVER_NAME)
-	@
+	@make fclean -C $(LIBFT_DIR) --silent
 	@echo "$(RED)✗ Objetos Removidos $(RESET)"
 	@echo "$(RED)✗ Executavel $(CLIENT_NAME) Removido $(RESET)"
 	@echo "$(RED)✗ Executavel $(SERVER_NAME) Removido $(RESET)"
