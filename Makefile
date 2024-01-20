@@ -29,7 +29,7 @@ SERVER_NAME = server
 
 #### Compiler #### 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700
+CFLAGS = -Wall -Wextra -Werror
 LIBFT		=	./libft/libft.a
 LIBFT_DIR	=	./libft
 INCLUDES = -I./include -I$(LIBFT_DIR)
@@ -52,11 +52,11 @@ $(PROJECT_NAME):
 	@echo "$(GREEN)✓ Cliente e Servidor Compilados $(RESET)"
 
 $(CLIENT_NAME): $(CLIENT_OBJ)
-	@$(CC) $(CFLAGS) $(LIBFT) $(INCLUDES) $(CLIENT_OBJ) -o $(CLIENT_NAME)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(CLIENT_OBJ) $(LIBFT) -o $(CLIENT_NAME)
 	@echo "$(GREEN)$ Cliente Pronto 👌 $(RESET)"
 
 $(SERVER_NAME): $(SERVER_OBJ)
-	@$(CC) $(CFLAGS) $(LIBFT) $(INCLUDES) $(SERVER_OBJ) -o $(SERVER_NAME)
+	@$(CC) $(CFLAGS) $(INCLUDES) $(SERVER_OBJ) $(LIBFT) -o $(SERVER_NAME)
 	@echo "$(GREEN)$ Servidor Pronto 👌 $(RESET)"
 
 clean:
