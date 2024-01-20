@@ -6,7 +6,7 @@
 #    By: danielasayuminitta <danielasayuminitta@    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 18:47:34 by danielasayu       #+#    #+#              #
-#    Updated: 2024/01/19 22:41:44 by danielasayu      ###   ########.fr        #
+#    Updated: 2024/01/19 23:24:08 by danielasayu      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ fclean:
 	@rm -f $(OBJS)
 	@rm -f $(CLIENT_NAME)
 	@rm -f $(SERVER_NAME)
+	@
 	@echo "$(RED)✗ Objetos Removidos $(RESET)"
 	@echo "$(RED)✗ Executavel $(CLIENT_NAME) Removido $(RESET)"
 	@echo "$(RED)✗ Executavel $(SERVER_NAME) Removido $(RESET)"
