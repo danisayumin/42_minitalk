@@ -6,12 +6,12 @@
 #    By: dsayumi- <dsayumi-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 18:47:34 by danielasayu       #+#    #+#              #
-#    Updated: 2024/01/21 15:18:37 by dsayumi-         ###   ########.fr        #
+#    Updated: 2024/01/21 15:47:29 by dsayumi-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #### Bonus Flag Definition ####
-BONUS_MODE = "true"
+BONUS_MODE = "false"
 
 #### Source code ####
 CLIENT = src/client.c
@@ -96,8 +96,6 @@ fclean:
 	@echo "$(RED)✗ Removed Objects$(RESET)"
 	@echo "$(RED)✗ Executable $(CLIENT_NAME) Removed $(RESET)"
 	@echo "$(RED)✗ Executable $(SERVER_NAME) Removed $(RESET)"
-	@echo "$(RED) Executable $(CLIENT_BONUS_NAME) Removed $(RESET)"
-	@echo "$(RED) Executable $(SERVER_BONUS_NAME) Removed $(RESET)"
 	@echo "$(RED)✗✗✗✗✗ All removed 😎 ✗✗✗✗✗$(RESET)"
 
 test:
