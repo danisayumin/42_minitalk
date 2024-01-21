@@ -12,32 +12,51 @@
 
 #include "minitalk.h"
 
-void	handler(int signum)
+void print_as_binary(unsigned char c)
+{
+	int i = 0;
+	while (i < 8)
+	{
+		ft_printf("%d", (c >> (7 - i)) & 1);
+		i++;
+	}
+	ft_printf("\n");
+}
+
+
+void	handler(int signum, siginfo_t *info, void *context)
 {
 	static unsigned char	c = 0;
-	static int				i = 0;
-
-	c |= (signum == SIGUSR1);
-	if (++i == 8)
+	static int				i = 7;
+	
+	(void)context;
+	
+	c |= (signum == SIGUSR1) << i;
+	if (--i == 0)
 	{
-		write(1, &c, 1);
-		i = 0;
+		print_as_binary(c);
+		//write(1, &c, 1);
+		i = 7;
 		c = 0;
 	}
-	else
-	{
-		c <<= 1;
-	}
+	
+	kill(info->si_pid, SIGUSR1);
 }
 
 int	main(void)
 {
+	struct sigaction	sa;
+	sa.sa_sigaction = handler;
+	sa.sa_flags = SA_SIGINFO;
+
 	ft_printf("PID: %d \n",getpid());
-	signal(SIGUSR1, handler);
-	signal(SIGUSR2, handler);
+
+
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
 	{
-		usleep(100);
+		pause();
 	}
 	return (0);
 }
