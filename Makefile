@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: danielasayuminitta <danielasayuminitta@    +#+  +:+       +#+         #
+#    By: dsayumi- <dsayumi-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/03 18:47:34 by danielasayu       #+#    #+#              #
-#    Updated: 2024/01/20 19:02:13 by danielasayu      ###   ########.fr        #
+#    Updated: 2024/01/21 13:41:40 by dsayumi-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,37 +45,37 @@ RESET = \033[0m
 all: $(PROJECT_NAME)
 
 $(PROJECT_NAME):
-	@echo "$(YELLOW) ⟦ Compilando Cliente e Servidor ⟧ $(RESET)"
+	@echo "$(YELLOW) ⟦ Compiling Client and Server ⟧ $(RESET)"
 	@make -C $(LIBFT_DIR) --silent
 	@make $(CLIENT_NAME)
 	@make $(SERVER_NAME)
-	@echo "$(GREEN)✓ Cliente e Servidor Compilados $(RESET)"
+	@echo "$(GREEN)✓ Compiled Client and Server $(RESET)"
 
 $(CLIENT_NAME): $(CLIENT_OBJ)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(CLIENT_OBJ) $(LIBFT) -o $(CLIENT_NAME)
-	@echo "$(GREEN)$ Cliente Pronto 👌 $(RESET)"
+	@echo "$(GREEN)$ Client Ready 👌 $(RESET)"
 
 $(SERVER_NAME): $(SERVER_OBJ)
 	@$(CC) $(CFLAGS) $(INCLUDES) $(SERVER_OBJ) $(LIBFT) -o $(SERVER_NAME)
-	@echo "$(GREEN)$ Servidor Pronto 👌 $(RESET)"
+	@echo "$(GREEN)$ Server Ready 👌 $(RESET)"
 
 clean:
-	@rm -f $(OBJS)
-	@echo "$(RED)✗ Objetos Removidos $(RESET)"
+	@rm -f $(OBJS) 
+	@echo "$(RED)✗ Removed Objects $(RESET)"
 
 fclean:
 	@rm -f $(OBJS)
 	@rm -f $(CLIENT_NAME)
 	@rm -f $(SERVER_NAME)
 	@make fclean -C $(LIBFT_DIR) --silent
-	@echo "$(RED)✗ Objetos Removidos $(RESET)"
-	@echo "$(RED)✗ Executavel $(CLIENT_NAME) Removido $(RESET)"
-	@echo "$(RED)✗ Executavel $(SERVER_NAME) Removido $(RESET)"
-	@echo "$(RED)✗✗✗✗✗ Removi a porra toda 😎 ✗✗✗✗✗$(RESET)"
+	@echo "$(RED)✗ Removed Objects$(RESET)"
+	@echo "$(RED)✗ Executable $(CLIENT_NAME) Removed $(RESET)"
+	@echo "$(RED)✗ Executable $(SERVER_NAME) Removed $(RESET)"
+	@echo "$(RED)✗✗✗✗✗ All removed 😎 ✗✗✗✗✗$(RESET)"
 
 test:
 	@echo "$(YELLOW) ☆*: .｡. o(≧▽≦)o .｡.:*☆ $(RESET)"
-	@echo "$(YELLOW) ⟦ Testando Cliente e Servidor ⟧ $(RESET)"
+	@echo "$(YELLOW) ⟦ Test Client and Server ⟧ $(RESET)"
 
 
 %.o: %.c

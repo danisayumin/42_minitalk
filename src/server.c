@@ -3,18 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danielasayuminitta <danielasayuminitta@    +#+  +:+       +#+        */
+/*   By: dsayumi- <dsayumi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 18:44:28 by danielasayu       #+#    #+#             */
-/*   Updated: 2024/01/20 18:44:40 by danielasayu      ###   ########.fr       */
+/*   Updated: 2024/01/21 13:56:14 by dsayumi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void print_as_binary(unsigned char c)
+void	print_as_binary(unsigned char c)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (i < 8)
 	{
 		ft_printf("%d", (c >> (7 - i)) & 1);
@@ -23,35 +25,29 @@ void print_as_binary(unsigned char c)
 	ft_printf("\n");
 }
 
-
 void	handler(int signum, siginfo_t *info, void *context)
 {
 	static unsigned char	c = 0;
 	static int				i = 7;
-	
+
 	(void)context;
-	
 	c |= (signum == SIGUSR1) << i;
 	if (--i == -1)
 	{
 		print_as_binary(c);
-		//write(1, &c, 1);
 		i = 7;
 		c = 0;
 	}
-
 	kill(info->si_pid, SIGUSR1);
 }
 
 int	main(void)
 {
 	struct sigaction	sa;
+
 	sa.sa_sigaction = handler;
 	sa.sa_flags = SA_SIGINFO;
-
-	ft_printf("PID: %d \n",getpid());
-
-
+	ft_printf("PID: %d \n", getpid());
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)

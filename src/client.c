@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danielasayuminitta <danielasayuminitta@    +#+  +:+       +#+        */
+/*   By: dsayumi- <dsayumi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 18:44:48 by danielasayu       #+#    #+#             */
-/*   Updated: 2024/01/20 18:54:56 by danielasayu      ###   ########.fr       */
+/*   Updated: 2024/01/21 13:51:20 by dsayumi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int g_sig_received = 0;
+int	g_sig_received = 0;
 
 void	sig_handler(int sig, siginfo_t *info, void *ucontext)
 {
@@ -30,32 +30,25 @@ void	send_char(int pid, char c)
 	while (i > 0)
 	{
 		g_sig_received = 0;
-		if(c >> i & 1){
+		if (c >> i & 1)
 			kill(pid, SIGUSR1);
-			ft_printf("1");
-		}
-		else{
+		else
 			kill(pid, SIGUSR2);
-			ft_printf("0");
-		}
 		while (g_sig_received != 1)
 			usleep(100);
 		i--;
 	}
 	ft_printf("\n");
-
 }
 
 int	main(int argc, char const *argv[])
 {
-	int	pid;
-
+	int					pid;
 	struct sigaction	sa;
+
 	sa.sa_sigaction = sig_handler;
 	sa.sa_flags = SA_SIGINFO;
-
 	sigaction(SIGUSR1, &sa, NULL);
-
 	if (argc != 3)
 	{
 		ft_printf("Usage: ./client [pid] [message]\n");

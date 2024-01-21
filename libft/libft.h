@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: danielasayuminitta <danielasayuminitta@    +#+  +:+       +#+        */
+/*   By: dsayumi- <dsayumi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 18:59:17 by dsayumi-          #+#    #+#             */
-/*   Updated: 2024/01/20 18:54:28 by danielasayu      ###   ########.fr       */
+/*   Updated: 2024/01/21 13:53:09 by dsayumi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_putnbr_fd(int n, int fd);
 char	*ft_itoa(int n);
 char	**ft_split(char const *s, char c);
 char	*ft_strtrim(char const *s1, char const *set);
-int     ft_printf(const char *str, ...);
+int		ft_printf(const char *str, ...);
 int		ft_putchar(char c);
 int		ft_putnbr(int n);
 int		ft_strlen(const char *s);
