@@ -26,11 +26,11 @@ void	send_char(int pid, char c)
 {
 	int	i;
 
-	i = 0;
-	while (i < 8)
+	i = 8;
+	while (i > 0)
 	{
 		g_sig_received = 0;
-		if((c >> (7 - i)) & 1){
+		if(c >> i & 1){
 			kill(pid, SIGUSR1);
 			ft_printf("1");
 		}
@@ -40,7 +40,7 @@ void	send_char(int pid, char c)
 		}
 		while (g_sig_received != 1)
 			usleep(100);
-		i++;
+		i--;
 	}
 	ft_printf("\n");
 

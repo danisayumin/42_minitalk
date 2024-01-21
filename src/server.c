@@ -32,14 +32,14 @@ void	handler(int signum, siginfo_t *info, void *context)
 	(void)context;
 	
 	c |= (signum == SIGUSR1) << i;
-	if (--i == 0)
+	if (--i == -1)
 	{
 		print_as_binary(c);
 		//write(1, &c, 1);
 		i = 7;
 		c = 0;
 	}
-	
+
 	kill(info->si_pid, SIGUSR1);
 }
 
